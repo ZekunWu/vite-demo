@@ -7,7 +7,7 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{vue,js,ts}": "eslint --fix"
+    "src/**/*.{vue,js,ts}": "eslint --fix"
   },
   "dependencies": {
     "vue": "^3.0.5",

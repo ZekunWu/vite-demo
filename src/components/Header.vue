@@ -7,5 +7,6 @@
 <style scoped>
 a {
   color: #42b983;
+  background: yellow;
 }
 </style>

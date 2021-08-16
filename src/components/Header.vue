@@ -1,14 +1,16 @@
 <template>
-  <div>header</div>
+  <div class="header"></div>
 </template>
 
-<script></script>
+<script>
+export default {
+  methods: {},
+};
+</script>
 
-<style scoped>
-a {
-  color: #42b983;
-  background: yellow;
-  font-size: 14px;
-  border: 1px solid pink;
+<style lang="less" scoped>
+.header {
+  height: 72px;
+  background: #0052d9;
 }
 </style>

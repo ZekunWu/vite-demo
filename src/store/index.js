@@ -1,27 +1,13 @@
 import { createStore } from 'vuex';
-
-const defaultState = {
-  count: 0,
-};
+import actions from './actions';
+import getters from './getters';
+import mutations from './mutations';
+import state from './state';
 
 // Create a new store instance.
 export default createStore({
-  state() {
-    return defaultState;
-  },
-  mutations: {
-    increment(state) {
-      state.count = state.count + 1;
-    },
-  },
-  actions: {
-    increment(context) {
-      context.commit('increment');
-    },
-  },
-  getters: {
-    double(state) {
-      return 2 * state.count;
-    },
-  },
+  state,
+  mutations,
+  actions,
+  getters,
 });

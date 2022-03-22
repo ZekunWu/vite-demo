@@ -10,7 +10,7 @@ export default {
 
 <style lang="less" scoped>
 .header {
-  height: 72px;
-  background: #0052d9;
+  height: 48px;
+  background: @primary-color;
 }
 </style>

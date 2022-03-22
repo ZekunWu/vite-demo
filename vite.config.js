@@ -1,32 +1,25 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import styleImport from 'vite-plugin-style-import';
+import ElementPlus from 'unplugin-element-plus/vite';
 import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    styleImport({
-      libs: [
-        {
-          libraryName: 'element-plus',
-          esModule: true,
-          ensureStyleFile: true,
-          resolveStyle: (name) => {
-            return `element-plus/lib/theme-chalk/${name}.css`;
-          },
-          resolveComponent: (name) => {
-            return `element-plus/lib/${name}`;
-          },
-        },
-      ],
-    }),
-  ],
+  plugins: [vue(), ElementPlus()],
   resolve: {
     alias: {
       // 配置别名
       '@': resolve(__dirname, './src'),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        modifyVars: {
+          hack: `true; @import (reference) "${resolve('src/assets/styles/vars.less')}";`,
+        },
+        javascriptEnabled: true,
+      },
     },
   },
   server: {

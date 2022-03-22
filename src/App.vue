@@ -36,7 +36,7 @@ export default {
   },
   components: {
     'page-header': Header,
-    SideMenu,
+    'side-menu': SideMenu,
     ArrowLeftBold,
     ArrowRightBold,
   },

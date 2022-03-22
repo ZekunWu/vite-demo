@@ -62,7 +62,6 @@ import {
   ElSlider,
   ElStep,
   ElSteps,
-  ElSubmenu,
   ElSwitch,
   ElTabPane,
   ElTable,
@@ -82,6 +81,7 @@ import {
   ElMessage,
   ElMessageBox,
   ElNotification,
+  ElSubMenu,
 } from 'element-plus';
 
 const components = [
@@ -148,8 +148,8 @@ const components = [
   ElSlider,
   ElStep,
   ElSteps,
-  ElSubmenu,
   ElSwitch,
+  ElSubMenu,
   ElTabPane,
   ElTable,
   ElTableColumn,

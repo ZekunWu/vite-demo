@@ -13,8 +13,11 @@ module.exports = {
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
+    _: 'readonly',
   },
+  parser: 'vue-eslint-parser',
   parserOptions: {
+    parser: '@babel/eslint-parser',
     ecmaVersion: 2018,
     sourceType: 'module',
   },
@@ -22,5 +25,7 @@ module.exports = {
   rules: {
     'prettier/prettier': ['error', { singleQuote: true }],
     quotes: ['error', 'single'],
+    'vue/no-v-model-argument': 'off',
+    'no-param-reassign': 0,
   },
 };

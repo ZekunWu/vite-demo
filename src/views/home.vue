@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="container">
-      home
+      homexxx
       <div><router-link to="/test">go test</router-link></div>
       <div>{{ count }}</div>
       <el-button class="local-add" @click="count++">add</el-button>

@@ -8,7 +8,7 @@
         </p>
       </blockquote>
       <figcaption class="font-medium">
-        <div class="text-cyan-600">Hello world</div>
+        <div class="text-cyan-300">Hello world</div>
         <div class="text-gray-500">Playground</div>
       </figcaption>
     </div>

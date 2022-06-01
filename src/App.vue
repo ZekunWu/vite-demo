@@ -56,7 +56,7 @@ export default {
       height: 80px;
       line-height: 80px;
       text-align: center;
-      font-size: 24px;
+      font-size: 36px;
       font-weight: 500;
       color: #0052d9;
     }

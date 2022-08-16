@@ -2,9 +2,9 @@
   <div class="logContainer">
     <module-title name="操作查询展示" class="module-title-position"></module-title>
     <div class="input-area">
-      <t-input class="input-item" label="查询ID：" />
-      <t-input class="input-item" label="查询IP：" />
-      <t-button>查询</t-button>
+      <t-input class="input-item" label="查询用户：" v-model="name" />
+      <t-input class="input-item" label="查询IP：" v-model="ip" />
+      <t-button @click="search">查询</t-button>
     </div>
     <t-table
       row-key="index"
@@ -16,18 +16,30 @@
       :size="size"
       :pagination="pagination"
       cell-empty-content="-"
-      @row-click="handleRowClick"
+      :loading="logListStore.logListLoading"
+      @change="handleChange"
     />
   </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
+import { storeToRefs } from 'pinia';
 import ModuleTitle from '@/components/ModuleTitle.vue';
 import { useLogListStore } from '@/store/logList';
 
 const logListStore = useLogListStore();
-const total = 28;
+const { total } = storeToRefs(logListStore);
+const name = ref('');
+const ip = ref('');
+const current = ref(1);
+const pageSize = ref(10);
+const pagination = reactive({
+  defaultCurrent: current,
+  defaultPageSize: pageSize,
+  total: 0,
+});
+pagination.total = total;
 const columns = [
   {
     colKey: 'platform',
@@ -60,14 +72,24 @@ const columns = [
   },
 ];
 
-const pagination = {
-  defaultCurrent: 2,
-  defaultPageSize: 5,
-  total,
+const search = () => {
+  logListStore.fetchLogList({
+    page_size: pageSize.value,
+    page_number: current.value,
+    operation_user: name.value,
+    operation_ip: ip.value,
+  });
+  // ?page_size=5&page_number=1&operation_user=tengyu&operation_ip=
+};
+
+const handleChange = ({ pagination }) => {
+  pageSize.value = pagination.pageSize;
+  current.value = pagination.current;
+  search();
 };
 
 onMounted(() => {
-  logListStore.fetchLogList();
+  search();
 });
 </script>
 

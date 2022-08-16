@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { ElMessage } from 'element-plus';
+import { Message } from 'tdesign-vue-next';
 // import store from '@/store';
 // import { getToken } from '@/utils/auth';
 
 // create an axios instance
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
+  // baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000, // request timeout
 });
@@ -47,9 +47,9 @@ service.interceptors.response.use(
 
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 20000) {
-      ElMessage({
+      Message({
         message: res.message || 'Error',
-        type: 'error',
+        theme: 'error',
         duration: 5 * 1000,
       });
       return Promise.reject(new Error(res.message || 'Error'));
@@ -58,9 +58,9 @@ service.interceptors.response.use(
   },
   (error) => {
     console.log(`err${error}`); // for debug
-    ElMessage({
+    Message({
       message: error.message,
-      type: 'error',
+      theme: 'error',
       duration: 5 * 1000,
     });
     return Promise.reject(error);

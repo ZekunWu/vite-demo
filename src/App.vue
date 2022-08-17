@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <t-config-provider :locale="enConfig">
+    <t-config-provider :global-config="enConfig">
       <div class="app-container">
         <Header></Header>
         <div class="content flex">
@@ -69,7 +69,7 @@ const isCollapse = ref(false);
   }
   .right {
     flex: 1;
-    overflow: hidden;
+    overflow: auto;
     background: @bg-color;
   }
 }

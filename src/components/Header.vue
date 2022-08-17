@@ -11,8 +11,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-// import { getAvatarImg } from '@/utils/user';
+import { onMounted, ref } from 'vue';
+// import { getUserInfo } from '@/utils/user';
 
 const title = '敏感操作管理平台';
 const avatarSize = 36;
@@ -20,6 +20,9 @@ const avatarUrl = ref('');
 // onBeforeMount(async () => {
 //   avatarUrl.value = await getAvatarImg();
 // });
+onMounted(() => {
+  // getUserInfo();
+});
 </script>
 
 <style lang="less" scoped>

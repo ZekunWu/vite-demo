@@ -4,16 +4,15 @@
     <div class="input-area">
       <t-input class="input-item" label="查询用户：" v-model="name" />
       <t-input class="input-item" label="查询IP：" v-model="ip" />
-      <t-button @click="search">查询</t-button>
+      <t-button @click="handleOnSearch">查询</t-button>
     </div>
     <t-table
       row-key="index"
       :data="logListStore.logList"
       :columns="columns"
-      stripe="true"
-      hover="true"
+      stripe
+      hover
       table-layout="fixed"
-      :size="size"
       :pagination="pagination"
       cell-empty-content="-"
       :loading="logListStore.logListLoading"
@@ -71,6 +70,11 @@ const columns = [
     ellipsis: true,
   },
 ];
+
+const handleOnSearch = () => {
+  current.value = 1;
+  search();
+};
 
 const search = () => {
   logListStore.fetchLogList({

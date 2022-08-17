@@ -57,11 +57,13 @@ export default defineConfig({
 
     // 设置代理，根据我们项目实际情况配置
     proxy: {
-      '/logList_api': {
-        target: 'http://tolstoy.woa.com/api/v3/rpcMock/target/946/',
+      '/api/': {
+        target: 'http://t.flowx.woa.com/',
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace('/logList_api/', '/'),
+        pathRewrite: {
+          '^/api/': '',
+        },
       },
     },
   },

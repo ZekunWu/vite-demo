@@ -46,14 +46,19 @@ service.interceptors.response.use(
     const res = response.data;
 
     // if the custom code is not 20000, it is judged as an error.
-    if (res.base_resp?.status_code !== 1) {
+    if (res.base_resp?.status_code !== 0) {
       MessagePlugin.error(res.message || 'Error');
       return Promise.reject(new Error(res.message || 'Error'));
     }
     return res;
   },
   (error) => {
-    console.log(`err${error}`); // for debug
+    // 非白名单用户
+    if (error.response?.data?.code === 30002) {
+      MessagePlugin.error(error.response.data.message || '请求错误');
+      return { sensitive_operations: [], total: 0 };
+    }
+    console.log(error.response); // for debug
     MessagePlugin.error(error.message || 'Error');
     return Promise.reject(error);
   }

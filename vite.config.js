@@ -54,17 +54,5 @@ export default defineConfig({
     watch: {
       usePolling: true,
     },
-
-    // 设置代理，根据我们项目实际情况配置
-    proxy: {
-      '/api/': {
-        target: 'http://t.flowx.woa.com/',
-        changeOrigin: true,
-        secure: false,
-        pathRewrite: {
-          '^/api/': '',
-        },
-      },
-    },
   },
 });

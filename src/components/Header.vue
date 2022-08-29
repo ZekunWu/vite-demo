@@ -14,7 +14,7 @@
 import { onMounted, ref } from 'vue';
 // import { getUserInfo } from '@/utils/user';
 
-const title = '敏感操作管理平台';
+const title = '**平台';
 const avatarSize = 36;
 const avatarUrl = ref('');
 // onBeforeMount(async () => {
